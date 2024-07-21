@@ -14,6 +14,7 @@ class MotionTester(Tester):
     def start(self):    
         super().start()
         self.detector = Pin(self.pin, Pin.IN)
+        return True
     def test(self):
         if self.detector.value():
             display.display_text("Motion is detected", 50, display.height - 50)

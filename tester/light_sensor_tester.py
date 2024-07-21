@@ -22,6 +22,7 @@ class LightSensorTester(Tester):
     def start(self):    
         super().start()
         self.pot = ADC(Pin(self.pin))
+        return True
        
     def test(self):
         value = self.pot.read_u16()

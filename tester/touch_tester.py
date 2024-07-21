@@ -14,6 +14,7 @@ class TouchTester(Tester):
     def start(self):    
         super().start()
         self.touch = Pin(self.pin, Pin.IN)
+        return True
     def test(self):
         if self.touch.value():
             display.fill_circle(display.width // 2, display.height  - 80, 10,  color565(0, 255, 0))

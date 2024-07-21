@@ -11,6 +11,7 @@ class LedTester(Tester):
     def start(self):
         super().start()
         self.led = Pin(self.led_pin, Pin.OUT)
+        return True
 
     def test(self):
         self.led.value(ctrl_button.value())

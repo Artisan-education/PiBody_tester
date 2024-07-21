@@ -16,12 +16,15 @@ class LedTowerTester(Tester):
     def start(self):
         super().start()
         self.np = NeoPixel(Pin(self.pin), 8)
+        return True
 
     def test(self):
         np = self.np
         for i in range(8):
             np[i] = colors[i]  # Set the current LED to red
             np.write()
+        
+        return True
             
 
     def finish(self):

@@ -13,6 +13,7 @@ class ServoTester(Tester):
         super().start()
         self.servo = PWM(Pin(self.pin))
         self.servo.freq(50)
+        return True
     
     def set_angle(self, angle):
         # Convert angle to duty cycle (16-bit integer)
