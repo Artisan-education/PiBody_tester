@@ -14,13 +14,14 @@ from tester.climate_tester import ClimateTester
 from tester.gyro_tester import GyroTester
 from tester.gesture_tester import GestureTester
 from tester.color_tester import ColorTester
-
+from tester.button_tester import ButtonTester
 
 led_tester = LedTester(7)
+button_tester = ButtonTester(6)
 led_tower_tester = LedTowerTester(8)
 servo_tester = ServoTester(9)
-motion_tester = MotionTester(28)
-touch_tester = TouchTester(28)
+motion_tester = MotionTester(9)
+touch_tester = TouchTester(8)
 potentiometer_tester = PotentiometerTester(28)
 light_sensor_tester = LightSensorTester(28)
 ultrasonic_tester = UltrasonicTester([2, 3])
@@ -33,6 +34,6 @@ gesture_tester = GestureTester([0, 1])
 color_tester = ColorTester([0, 1])
 
 
-test_list = [led_tester, led_tower_tester, servo_tester, motion_tester, touch_tester, potentiometer_tester, light_sensor_tester, ultrasonic_tester, encoder_tester, joystick_tester, sound_tester, climate_tester, gyro_tester, gesture_tester, color_tester ]
+test_list = [led_tester, button_tester, led_tower_tester, servo_tester, motion_tester, touch_tester, potentiometer_tester, light_sensor_tester, ultrasonic_tester, encoder_tester, joystick_tester, sound_tester, climate_tester, gyro_tester, gesture_tester, color_tester ]
 
 
