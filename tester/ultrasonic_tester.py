@@ -11,10 +11,10 @@ class UltrasonicTester(Tester):
 
     def __init__(self, pin):
             super().__init__(self.name, pin)
-            init_loading_bar()
     
     def start(self):    
         super().start()
+        init_loading_bar()
         self.echo = Pin(self.pin[0], Pin.IN)
         self.trigger = Pin(self.pin[1], Pin.OUT)
         return True

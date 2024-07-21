@@ -10,10 +10,10 @@ class EncoderTester(Tester):
     name = "Encoder"
     def __init__(self, pin):
             super().__init__(self.name, pin)
-            init_loading_bar()
     
     def start(self):    
         super().start()
+        init_loading_bar()
         self.encoder = RotaryIRQ(self.pin[0], self.pin[1], min_val=-15, max_val=15, incr=1, reverse=False, range_mode=RotaryIRQ.RANGE_WRAP)
         return True
 

@@ -26,7 +26,7 @@ class Tester():
         else:
             slot_name = slot_names[str(self.pin)]
 
-        display.display_text(f"Connect the {self.name} to {slot_name}. Press the button on GP6 to continue", 50, 50)
+        display.display_text(f"Connect the {self.name} to {slot_name}. Press the button on Bluetooth (GP5) to continue", 50, 50)
 
         time.sleep(0.5)
         while not ctrl_button.value():

@@ -9,10 +9,10 @@ class SoundTester(Tester):
 
     def __init__(self, pin):
             super().__init__(self.name, pin)
-            init_loading_bar()
     
     def start(self):    
         super().start()
+        init_loading_bar()
 
         self.analog = ADC(self.pin[0])
         self.digital = Pin(self.pin[1], Pin.IN)

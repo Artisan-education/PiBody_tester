@@ -9,7 +9,6 @@ class GyroTester(Tester):
 
     def __init__(self, pin):
             super().__init__(self.name, pin)
-            init_loading_bar()
     
     def start(self):    
         super().start()

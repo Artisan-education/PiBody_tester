@@ -24,17 +24,55 @@ def init_loading_bar():
 
 def init():
     display.clear()
-    display.display_text("Connect button to D1(GP6)", 40, 106)
-    display.display_text("And press it", 40, 126)
+    display.display_text("Press button Bluetooth(GP5)", 40, 106)
     while not ctrl_button.value():
         pass
 
+menu_options = ["All tests"] + [tester.name for tester in test_list]
+
+def select_cell(cnt):
+    display.text_box(menu_options[cnt], 20 + (cnt % 4) * 70, (cnt // 4) * 60, text_color= color565(20, 20, 0), color= color565(80, 80, 0))
+# (b, g, r)
+def deselect_cell(cnt):
+    display.text_box(menu_options[cnt], 20 + (cnt % 4) * 70, (cnt // 4) * 60)
+
+
+
+def menu():
+    global test_list
+    display.clear()
+    for i in range(4):
+        for j in range(4):
+            display.text_box(menu_options[i * 4 + j], 20 + j * 70, i * 60)
+    
+    selected_cell = 0
+    select_cell(selected_cell)
+
+    while True:
+        if ctrl_button.value():
+            hold_time_elapsed = ticks_ms()
+            while ctrl_button.value():
+                if ticks_ms() - hold_time_elapsed > hold_duration:
+                    print("Selected test: ", menu_options[selected_cell])
+                    if selected_cell != 0:
+                        test_list = [test_list[selected_cell - 1]]
+                        return
+                    else:
+                        test_ind = selected_cell - 1
+                        return [test_list[test_ind]]
+            selected_cell = (selected_cell + 1) % 16
+            select_cell(selected_cell)
+            deselect_cell((selected_cell - 1) % 16)
+      
 def main():
     global test_ind
     
     init()
-        
+
     hold_time_elapsed = ticks_ms()
+
+    menu()
+
     test_count = len(test_list)
 
     while not start_test(test_ind):

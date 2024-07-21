@@ -647,18 +647,33 @@ class Display(object):
 
     def split_string(self, s, chunk_size):
         return [s[i:i + chunk_size] for i in range(0, len(s), chunk_size)]
-    def display_text(self, text, x, y):
+    def display_text(self, text, x, y, color = color565(255, 255, 255)):
         text_space = self.width - x - 40
         char_per_line = text_space // 8
         split_text = self.split_string(text, char_per_line)
         
         for i in range(len(split_text) - 1):
-            self.draw_text8x8(x, y + i * 10, split_text[i], color565(255, 255, 255))
+            self.draw_text8x8(x, y + i * 10, split_text[i], color)
         
         offset = (text_space - len(split_text[-1]) * 8) // 2
-        self.draw_text8x8(x + offset, y + (len(split_text) - 1) * 10, split_text[-1], color565(255, 255, 255))
+        self.draw_text8x8(x + offset, y + (len(split_text) - 1) * 10, split_text[-1], color)
 
         
+    def text_box(self, text, x, y, w = 70, h = 60, color = color565(255, 255, 255), text_color = color565(255, 255, 255), fill = 0):
+        if fill:
+            self.fill_rectangle(x, y, w, h, color)
+        else:
+            self.draw_rectangle(x, y, w, h, color)
+
+        char_per_line = w // 8
+        split_text = self.split_string(text, char_per_line)
+        
+        for i in range(len(split_text) - 1):
+            self.draw_text8x8(x + 2, y + h//2 - 5 + i * 10, split_text[i], text_color)
+
+              
+        offset = (w - len(split_text[-1]) * 8) // 2
+        self.draw_text8x8(x + offset, y + h//2 - 5 + (len(split_text) - 1) * 10, split_text[-1], text_color)
 
     def draw_vline(self, x, y, h, color):
         """Draw a vertical line.

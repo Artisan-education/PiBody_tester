@@ -16,11 +16,11 @@ class PotentiometerTester(Tester):
     def __init__(self, pin):
         super().__init__(self.name, pin)
         self.pin = pin
-        self.init_loading_bar()
         
  
     def start(self):    
         super().start()
+        self.init_loading_bar()
         self.pot = ADC(Pin(self.pin))
         return True
        

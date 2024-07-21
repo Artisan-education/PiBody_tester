@@ -29,6 +29,8 @@ def initialize_display():
 def show_circile(value):
     display.fill_circle(display.width // 2, display.height  - 40, 10,  color565(0, value * 255, 0))
 
-ctrl_button = Pin(6, Pin.IN)
+    
+
+ctrl_button = Pin(5, Pin.IN, Pin.PULL_DOWN)
 display = initialize_display()
     
