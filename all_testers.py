@@ -34,6 +34,6 @@ gesture_tester = GestureTester([0, 1])
 color_tester = ColorTester([0, 1])
 
 
-test_list = [led_tester, button_tester, led_tower_tester, servo_tester, motion_tester, touch_tester, potentiometer_tester, light_sensor_tester, ultrasonic_tester, encoder_tester, joystick_tester, sound_tester, climate_tester, gyro_tester, gesture_tester, color_tester ]
+test_list = [led_tester, led_tower_tester, servo_tester, motion_tester, touch_tester, potentiometer_tester, light_sensor_tester, ultrasonic_tester, encoder_tester, joystick_tester, sound_tester, climate_tester, gyro_tester, gesture_tester, color_tester ]
 
 

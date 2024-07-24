@@ -5,7 +5,7 @@ from utime import sleep
 from root_tools import ctrl_button, display, color565
 
 class TouchTester(Tester):
-    name = "Touch Sensor"
+    name = "Touch/Push Button"
     def __init__(self, pin):
         super().__init__(self.name, pin)
         self.pin = pin

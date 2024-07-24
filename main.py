@@ -1,8 +1,29 @@
-from machine import Pin, SPI
-from utime import sleep_ms, ticks_ms
+from machine import Pin, PWM
+from utime import sleep_ms, ticks_ms, sleep
 
 from root_tools import display, ctrl_button, color565
 from all_testers import test_list
+
+buzzer = PWM(Pin(4))
+C4 = 261
+D4 = 294
+E4 = 329
+F4 = 349
+G4 = 392
+A4 = 440
+B4 = 493
+C5 = 523
+melody = [D4,C4, E4]
+durations = [0.5, 0.5, 0.5]  
+def play_tone(frequency, duration):
+    buzzer.freq(frequency)
+    buzzer.duty_u16(32768)  # 50% duty cycle
+    sleep(duration)
+    buzzer.duty_u16(0)
+for note, duration in zip(melody, durations):
+    play_tone(note, duration)
+
+
 
 test_ind = 0
 hold_duration = 750
